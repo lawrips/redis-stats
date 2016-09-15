@@ -6,8 +6,8 @@ var RedisStats = require('redis-stats');
 
 var redisStats = new RedisStats(
     {
-        servers: [{'host': 'localhost', 'port': 6379'}],
-        list: ['uptime\_in\_seconds','used_memory'],
+        servers: [{'host': 'localhost', 'port': 6379}],
+        list: ['uptime_in_seconds','used_memory'],
     });
 
 redisStats.initialize();
@@ -26,8 +26,8 @@ var RedisStats = require('redis-stats');
 
 var redisStats = new RedisStats(
     {
-        servers: [{'host': 'localhost', 'port': 6379'}], // array of servers
-        list: ['uptime\_in\_seconds','used_memory'], // list of redis parameters to monitor - full list is here http://redis.io/commands/INFO
+        servers: [{'host': 'localhost', 'port': 6379}], // array of servers
+        list: ['uptime_in_seconds','used_memory'], // list of redis parameters to monitor - full list is here http://redis.io/commands/INFO
     });
 
 redisStats.initialize();
@@ -61,11 +61,11 @@ For example:
 ### Options
 The full list of options accepted by the Redis-Stats constructor:
 
-```json
+```js
     {
         servers: [{'host':'host', 'port':'port'}],  // array of servers to be monitored
         
-        list: ['uptime\_in\_seconds','used_memory'],   // list of stats to monitor - full list is here http://redis.io/commands/INFO
+        list: ['uptime_in_seconds','used_memory'],   // list of stats to monitor - full list is here http://redis.io/commands/INFO
 
         redisOptions : {},  // (optional) standard redis options (e.g. 'password')
 
