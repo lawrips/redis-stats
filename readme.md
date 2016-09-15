@@ -73,21 +73,15 @@ Alternatively, I'm writing a separate reactjs library which will turn these stat
 The full list of options accepted by the Redis-Stats constructor:
 
 ```js
-    {
-        servers: [{'host':'host', 'port':'port'}],  // array of servers to be monitored
-        
-        stats: ['uptime_in_seconds','used_memory'],   // list of stats to monitor - full list is here http://redis.io/commands/INFO
-
-        redisOptions : {},  // (optional) standard redis options (e.g. 'password')
-
-        prefix: 'myserverstats:',    // (optional) prefix to insert in front of keys in redis for any persisted stats 
-
-        cluster: true,      // (optional) if true, the supplied redis servers will be treated as a cluster. If false (default), they'll be treated as independent servers      
-        
-        interval: 30,  // (optional) how long in seconds to wait between each redis INFO command (default is 60)
-
-        maxItems:  5400     // (optional) how many items to persist for each server:stat combo (default is 1440 which is 1 days worth of stats at 1 minute intervals)
-    }
+{
+    servers: [{'host':'host', 'port':'port'}],  // array of servers to be monitored   
+    stats: ['uptime_in_seconds','used_memory'],   // list of stats to monitor - full list is here http://redis.io/commands/INFO
+    redisOptions : {},  // (optional) standard redis options (e.g. 'password')
+    prefix: 'myserverstats:',    // (optional) prefix to insert in front of keys in redis for any persisted stats 
+    cluster: true,      // (optional) if true, the supplied redis servers will be treated as a cluster. If false (default), they'll be treated as independent servers      
+    interval: 30,  // (optional) how long in seconds to wait between each redis INFO command (default is 60)
+    maxItems:  5400     // (optional) how many items to persist for each server:stat combo (default is 1440 which is 1 days worth of stats at 1 minute intervals)
+}
 ```
 
 
