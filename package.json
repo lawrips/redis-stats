@@ -1,6 +1,6 @@
 {
   "name": "redis-stats",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Automatic generation of stats using the redis INFO command",
   "main": "index.js",
   "scripts": {
