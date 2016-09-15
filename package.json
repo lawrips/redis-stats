@@ -1,0 +1,29 @@
+{
+  "name": "redis-stats",
+  "version": "0.0.1",
+  "description": "Automatic generation of stats using the redis INFO command",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lawrips/redis-stats.git"
+  },
+  "keywords": [
+    "redis",
+    "stats",
+    "info",
+    "monitoring"
+  ],
+  "author": "Lawrence Ripsher",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lawrips/redis-stats/issues"
+  },
+  "homepage": "https://github.com/lawrips/redis-stats#readme",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "ioredis": "^2.3.0"
+  }
+}
