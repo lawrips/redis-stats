@@ -4,11 +4,10 @@ Automatic generation of stats using the redis INFO command
 ```javascript
 var RedisStats = require('redis-stats');
 
-var redisStats = new RedisStats(
-    {
-        servers: [{'host': 'localhost', 'port': 6379}],
-        list: ['uptime_in_seconds','used_memory'],
-    });
+var redisStats = new RedisStats({
+    servers: [{'host': 'localhost', 'port': 6379}],
+    stats: ['uptime_in_seconds','used_memory'],
+});
 
 redisStats.initialize();
 ```
@@ -24,11 +23,10 @@ To initialize Redis-Stats, use the minimum setup:
 ```javascript
 var RedisStats = require('redis-stats');
 
-var redisStats = new RedisStats(
-    {
-        servers: [{'host': 'localhost', 'port': 6379}], // array of servers
-        list: ['uptime_in_seconds','used_memory'], // list of redis parameters to monitor - full list is here http://redis.io/commands/INFO
-    });
+var redisStats = new RedisStats({
+    servers: [{'host': 'localhost', 'port': 6379}],
+    stats: ['uptime_in_seconds','used_memory'],
+});
 
 redisStats.initialize();
 ```
@@ -78,7 +76,7 @@ The full list of options accepted by the Redis-Stats constructor:
     {
         servers: [{'host':'host', 'port':'port'}],  // array of servers to be monitored
         
-        list: ['uptime_in_seconds','used_memory'],   // list of stats to monitor - full list is here http://redis.io/commands/INFO
+        stats: ['uptime_in_seconds','used_memory'],   // list of stats to monitor - full list is here http://redis.io/commands/INFO
 
         redisOptions : {},  // (optional) standard redis options (e.g. 'password')
 
