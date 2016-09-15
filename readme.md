@@ -1,4 +1,4 @@
-# Redis-Stats
+# redis-stats
 Automatic generation of stats using the redis INFO command
 
 ```javascript
@@ -58,6 +58,19 @@ For example:
 {"2016-09-15T20:24:46.050Z":"233"}
 ``` 
 
+### Displaying Stats
+You can consume this data yourself pretty easily by just doing something like:
+
+```javascript
+redis.zrangebyscore('status:' + host + ':' + port + ':' + type, '-inf', '+inf', (err, results) => {
+    console.log('all my stats:' + results);
+});                
+```
+
+Alternatively, I'm writing a separate reactjs library which will turn these stats into charts (using the lovely chartjs).
+
+[Find out more at Redis-Live](https://www.npmjs.com/package/redis-live). 
+
 ### Options
 The full list of options accepted by the Redis-Stats constructor:
 
@@ -75,19 +88,23 @@ The full list of options accepted by the Redis-Stats constructor:
         
         interval: 30,  // (optional) how long in seconds to wait between each redis INFO command (default is 60)
 
-        maxItems:  5400     // (optional) how many items to persist for each server:stat combo (default is 10800 which is 7 days worth of stats at 1 minute intervals)
+        maxItems:  5400     // (optional) how many items to persist for each server:stat combo (default is 1440 which is 1 days worth of stats at 1 minute intervals)
     }
 ```
 
-### Displaying
-You can consume this data yourself pretty easily by just doing something like:
 
-```javascript
-redis.zrangebyscore('status:' + host + ':' + port + ':' + type, '-inf', '+inf', (err, results) => {
-    console.log('all my stats:' + results);
-});                
+### Debugging
+
+To see debug logs as they are generated, simply set the environment variable:
+
 ```
+DEBUG=redis-stats
+``` 
 
-Alternatively, I'm writing a separate reactjs library which will turn these stats into charts (using the lovely chartjs).
+### Next steps
+A bunch of todos:
 
-[Find out more at Redis-Live](https://www.npmjs.com/package/redis-live). 
+1. Tests!
+2. More time slicing options (e.g. bucketing by hour, etc) 
+3. Event emitting for errors (e.g. connection failed to redis, etc)
+4. More display options (which will be in other libraries like redis-live)
