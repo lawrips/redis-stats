@@ -12,6 +12,9 @@ var redisStats = new RedisStats({
 redisStats.initialize();
 ```
 
+## Demo
+A working example of a website displaying data collected by redis-stats can be seen at in the project [Redis Live on github](https://github.com/lawrips/redis-live). A working example of this can be viewed / interacted with at [www.redislive.com](http://www.redislive.com)
+
 ## How it works
 Include and initialize this library to automatically take snapshots of your redis server(s) using the rediS INFO command. By having these stats automatically generated in the background, it becomes easy to create graphs on memory usage, # connected clients, uptime, changes since last backup, etc. 
 
@@ -89,6 +92,23 @@ Daily, as you'd expect is:
 1) "{\"2016-09-17T00:00:00.000Z\":19255914.94736842,\"n\":1440}"
 1) "{\"2016-09-18T00:00:00.000Z\":29235914.94736842,\"n\":1440}"
 ```
+
+### Special cases
+
+Some sections returened by the redis INFO command are comma separated lists. The most interesting example of this is "Keyspace". The raw info returned in this section looks something like:
+```
+db0 // database name (default)
+keys=37,expires=2,avg_ttl=20648 // comma separated list of values
+```
+As of version 0.3, redis-stats now supports the extraction and recording of these values. These values need to be specified slightly differently in the constructor. For example, to record the "keys" value for "db0", you should pass in "db0:keys" as follows:  
+
+```
+var redisStats = new RedisStats({
+    servers: [{'host': 'localhost', 'port': 6379}],
+    stats: ['db0:keys'],
+});
+```
+Now the # of keys for db0 will be automatically recorded. 
 
 ### Displaying Stats
 You can consume this data yourself easily by just querying redis directly.
