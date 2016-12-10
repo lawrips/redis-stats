@@ -136,7 +136,7 @@ The full list of options accepted by the Redis-Stats constructor:
 
 ```js
 {
-    servers: [{'host':'host', 'port':'port'}],  // array of servers to be monitored   
+    servers: [{'host':'host', 'port':'port'}],  // array of servers to be monitored ('password' can be supplied here also)
     stats: ['uptime_in_seconds','used_memory'],   // list of stats to monitor - full list is here http://redis.io/commands/INFO
     redisOptions : {},  // (optional) standard redis options (e.g. 'password')
     prefix: 'myserverstats:',    // (optional) prefix to insert in front of keys in redis for any persisted stats 
